@@ -7,32 +7,29 @@
 参考链接：https://github.com/Skyexu/TopSup
 
 
-大体思路就是：截屏 -> 切割出题目部分 -> 文字识别 -> 浏览器显示搜索结果
+大体思路就是：截屏 -> 切割出题目部分 -> 文字识别 -> 浏览器显示搜索结果<br>
 
-1. 安装ADB
-    下载网址：https://adb.clockworkmod.com/
+1. 安装ADB<br>
+    下载网址：https://adb.clockworkmod.com/<br>
+    环境变量的配置可以参考：https://blog.csdn.net/weixin_43927138/article/details/90477966<br>
+    配置好后cmd中输入adb version，检查是否成功。<br>
     
-    环境变量的配置可以参考：https://blog.csdn.net/weixin_43927138/article/details/90477966
+2. 使用PIL库对截屏图片进行处理，只保留题目部分<br>
+    pip install PIL<br>
+    question = img.crop((50, 380, 1000, 620))<br>
+    参数需要根据手机的屏幕大小自己调一调，四个数字一次表示左上右下四条边线的位置<br>
     
-    配置好后cmd中输入adb version，检查是否成功。
-    
-2. 使用PIL库对截屏图片进行处理，只保留题目部分
-    pip install PIL
-    question = img.crop((50, 380, 1000, 620))
-    参数需要根据手机的屏幕大小自己调一调，四个数字一次表示左上右下四条边线的位置
-    
-3. 文字识别，利用百度云的ORC
-    1)注册网址：https://cloud.baidu.com/product/ocr
-    
-    2)注册登录后，在可用服务列表中找到“通用文字识别”，选择开通（免费的，一天50000次可以玩）
-    3)开通后，返回刚才的页面，即文字识别的首页
-    4)点击“创建应用”，给应用起个名字和描述，完成创建
-    5)再返回文字识别的首页，点击“管理应用”，可以看到自己刚刚创建的应用以及API key等信息，有用
-4. 调用浏览器进行搜索（爬取搜索结果太麻烦了……不如直接瞅一瞅浏览器）
+3. 文字识别，利用百度云的ORC<br>
+    1) 注册网址：https://cloud.baidu.com/product/ocr<br>
+    2) 注册登录后，在可用服务列表中找到“通用文字识别”，选择开通（免费的，一天50000次可以玩）<br>
+    3) 开通后，返回刚才的页面，即文字识别的首页<br>
+    4) 点击“创建应用”，给应用起个名字和描述，完成创建<br>
+    5) 再返回文字识别的首页，点击“管理应用”，可以看到自己刚刚创建的应用以及API key等信息，有用<br>
+4. 调用浏览器进行搜索（爬取搜索结果太麻烦了……不如直接瞅一瞅浏览器）<br>
 
-具体操作：
-1. 下载安装并配置好ADB，用数据线连接手机和电脑，打开USB调试
-2. 注册百度云ORC并创建应用，记住AppID, API key, Secret key
-3. 打开Pycharm运行toptest.py，调整一下问题区域的参数，搜索结果就从浏览器里面跳出来了！
+具体操作：<br>
+1. 下载安装并配置好ADB，用数据线连接手机和电脑，打开USB调试<br>
+2. 注册百度云ORC并创建应用，记住AppID, API key, Secret key<br>
+3. 打开Pycharm运行toptest.py，调整一下问题区域的参数，搜索结果就从浏览器里面跳出来了！<br>
 
 ps. 借用了大佬skyexu的GetImgTool，用来调试截图区域
