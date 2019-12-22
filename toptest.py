@@ -35,7 +35,7 @@ class Baiduaip(object):
             words_list=text["words_result"]
             for i in words_list:
                 word=i["words"]
-                return word
+            return word
 
 def run():
     baidu_aip=Baiduaip()
